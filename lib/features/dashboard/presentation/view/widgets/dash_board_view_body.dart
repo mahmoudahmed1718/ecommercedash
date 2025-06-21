@@ -1,4 +1,5 @@
 import 'package:ecommercedash/core/widgets/custom_button.dart';
+import 'package:ecommercedash/features/add_product/presentation/view/add_product_view.dart';
 import 'package:flutter/material.dart';
 
 class DashBoardViewBody extends StatelessWidget {
@@ -9,7 +10,14 @@ class DashBoardViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [CustomButton(onpressed: () {}, text: 'Add Product')],
+        children: [
+          CustomButton(
+            onpressed: () {
+              Navigator.pushNamed(context, AddProductView.routeName);
+            },
+            text: 'Add Product',
+          ),
+        ],
       ),
     );
   }
