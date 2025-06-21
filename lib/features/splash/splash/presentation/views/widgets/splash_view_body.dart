@@ -35,6 +35,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void excuteNaviation() {
     // Provide a default value of false if null
     Future.delayed(const Duration(seconds: 3), () {
+      // ignore: use_build_context_synchronously
       Navigator.pushReplacementNamed(context, DashBoardView.routeName);
       // If
     });
