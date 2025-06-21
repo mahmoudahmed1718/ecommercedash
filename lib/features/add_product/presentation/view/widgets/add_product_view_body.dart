@@ -1,5 +1,6 @@
 import 'package:ecommercedash/core/widgets/custom_text_form_filed.dart';
 import 'package:ecommercedash/features/add_product/presentation/view/widgets/image_file.dart';
+import 'package:ecommercedash/features/add_product/presentation/view/widgets/is_checked_box.dart';
 import 'package:flutter/material.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -19,7 +20,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
       autovalidateMode: autovalidateMode,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
+        child: ListView(
           children: [
             const SizedBox(height: 16),
             CustomTextFormField(
@@ -43,12 +44,20 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               maxLines: 5,
             ),
             const SizedBox(height: 16),
+
+            IsCheckedBox(
+              onchanged: (value) {
+                // Handle the checkbox state change
+                // You can save it to a state variable or process it as needed
+              },
+            ),
             ImageFile(
               onImagePicked: (imageFile) {
                 // Handle the picked image file
                 // You can save it to a state variable or process it as needed
               },
             ),
+            const SizedBox(height: 16),
           ],
         ),
       ),

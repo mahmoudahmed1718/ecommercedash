@@ -56,7 +56,7 @@ class _ImageFileState extends State<ImageFile> {
               child: IconButton(
                 onPressed: () {
                   imageFile = null;
-                  widget.onImagePicked(imageFile!);
+                  widget.onImagePicked(imageFile);
                   setState(() {});
                 },
                 icon: Icon(Icons.delete, color: Colors.red),
