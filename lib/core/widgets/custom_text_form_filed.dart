@@ -4,14 +4,14 @@ class CustomTextFormField extends StatelessWidget {
   final String name;
   final TextInputType textType;
   final int maxLines;
-  final void Function(String?)? onSave;
+  final void Function(String?)? onSaved;
 
   const CustomTextFormField({
     super.key,
     required this.name,
     this.textType = TextInputType.text,
     this.maxLines = 1,
-    this.onSave,
+    this.onSaved,
   });
 
   @override
@@ -35,7 +35,7 @@ class CustomTextFormField extends StatelessWidget {
         }
         return null;
       },
-      onSaved: onSave,
+      onSaved: onSaved,
     );
   }
 }
