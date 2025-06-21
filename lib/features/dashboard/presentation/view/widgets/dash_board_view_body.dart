@@ -5,8 +5,12 @@ class DashBoardViewBody extends StatelessWidget {
   const DashBoardViewBody({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [CustomButton(onpressed: () {}, text: 'Add Product')],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [CustomButton(onpressed: () {}, text: 'Add Product')],
+      ),
     );
   }
 }
