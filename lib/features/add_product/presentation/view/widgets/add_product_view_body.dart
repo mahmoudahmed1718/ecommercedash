@@ -1,4 +1,5 @@
 import 'package:ecommercedash/core/widgets/custom_text_form_filed.dart';
+import 'package:ecommercedash/features/add_product/presentation/view/widgets/image_file.dart';
 import 'package:flutter/material.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -42,10 +43,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               maxLines: 5,
             ),
             const SizedBox(height: 16),
-            CustomTextFormField(
-              name: 'Product Name',
-              textType: TextInputType.text,
-            ),
+            ImageFile(),
           ],
         ),
       ),
