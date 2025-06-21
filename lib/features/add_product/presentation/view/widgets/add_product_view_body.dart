@@ -43,7 +43,12 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               maxLines: 5,
             ),
             const SizedBox(height: 16),
-            ImageFile(),
+            ImageFile(
+              onImagePicked: (imageFile) {
+                // Handle the picked image file
+                // You can save it to a state variable or process it as needed
+              },
+            ),
           ],
         ),
       ),
