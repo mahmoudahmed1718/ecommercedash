@@ -1,3 +1,4 @@
+import 'package:ecommercedash/core/widgets/custom_text_form_filed.dart';
 import 'package:flutter/material.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -15,7 +16,39 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
     return Form(
       key: formKey,
       autovalidateMode: autovalidateMode,
-      child: Column(children: []),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            const SizedBox(height: 16),
+            CustomTextFormField(
+              name: 'Product Name',
+              textType: TextInputType.text,
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormField(
+              name: 'Product price',
+              textType: TextInputType.number,
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormField(
+              name: 'Product code',
+              textType: TextInputType.number,
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormField(
+              name: 'Product description',
+              textType: TextInputType.text,
+              maxLines: 5,
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormField(
+              name: 'Product Name',
+              textType: TextInputType.text,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
