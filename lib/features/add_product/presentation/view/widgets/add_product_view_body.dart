@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:ecommercedash/core/widgets/custom_button.dart';
 import 'package:ecommercedash/core/widgets/custom_text_form_filed.dart';
 import 'package:ecommercedash/core/widgets/snak_bar.dart';
+import 'package:ecommercedash/features/add_product/domain/entities/add_product_input_entity.dart';
 import 'package:ecommercedash/features/add_product/presentation/view/widgets/image_file.dart';
 import 'package:ecommercedash/features/add_product/presentation/view/widgets/is_checked_box.dart';
 import 'package:flutter/material.dart';
@@ -84,6 +85,15 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     );
                     return;
                   }
+                  AddProductInputEntity addProductInputEntity =
+                      AddProductInputEntity(
+                        name: name,
+                        description: description,
+                        price: price,
+                        code: code,
+                        imageFile: image!,
+                        isFeatured: ischecked ? 'yes' : 'no',
+                      );
                   snackBarMethod(context, 'Product added successfully');
                 }
                 setState(() {
