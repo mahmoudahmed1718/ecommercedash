@@ -9,6 +9,9 @@ class AddProductInputModel extends AddProductInputEntity {
     required super.imageFile,
     required super.isFeatured,
     super.imageUrl,
+    required super.monthExpires,
+    required super.numberOfCalories,
+    required super.unitAmount,
   });
 
   factory AddProductInputModel.fromEntity(AddProductInputEntity entity) {
@@ -20,6 +23,9 @@ class AddProductInputModel extends AddProductInputEntity {
       imageFile: entity.imageFile,
       isFeatured: entity.isFeatured,
       imageUrl: entity.imageUrl,
+      monthExpires: entity.monthExpires,
+      numberOfCalories: entity.numberOfCalories,
+      unitAmount: entity.unitAmount,
     );
   }
   toJson() {
@@ -30,6 +36,12 @@ class AddProductInputModel extends AddProductInputEntity {
       'code': code,
       'imageUrl': imageUrl,
       'isFeatured': isFeatured,
+      'monthExpires': monthExpires,
+      'numberOfCalories': numberOfCalories,
+      'unitAmount': unitAmount,
+      'isOrganic': isOrgainic,
+      'avergeRating': avergeRating,
+      'rangeCount': rangeCount,
     };
   }
 }
