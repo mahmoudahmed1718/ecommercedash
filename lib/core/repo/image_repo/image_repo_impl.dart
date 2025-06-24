@@ -4,18 +4,13 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:ecommercedash/core/errors/faileur.dart';
 import 'package:ecommercedash/core/repo/image_repo/image_repo.dart';
-import 'package:ecommercedash/core/services/firebase_storge_service.dart';
 import 'package:ecommercedash/core/services/storage_service.dart';
 import 'package:ecommercedash/core/utils/backend_points.dart';
 
 class ImageRepoImpl implements ImageRepo {
-  final FirebaseStorgeService firebaseStorgeService;
   final StorageService storageService;
 
-  ImageRepoImpl({
-    required this.firebaseStorgeService,
-    required this.storageService,
-  });
+  ImageRepoImpl({required this.storageService});
   @override
   Future<Either<Faileur, String>> uploadImage(File imageFile) async {
     try {
