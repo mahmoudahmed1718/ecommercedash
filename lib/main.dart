@@ -2,19 +2,15 @@ import 'package:bloc/bloc.dart';
 import 'package:ecommercedash/core/helper_functions/on_generate_route.dart';
 import 'package:ecommercedash/core/services/custom_bloc_observer.dart';
 import 'package:ecommercedash/core/services/get_it_service.dart';
-import 'package:ecommercedash/core/utils/keys.dart';
+import 'package:ecommercedash/core/services/supabase_storage_service.dart';
 import 'package:ecommercedash/features/splash/splash/presentation/views/splash_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   Bloc.observer = CustomBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
-  await Supabase.initialize(
-    url: Keys.supabaseUrl,
-    anonKey: Keys.supabaseApiKey,
-  );
+  await SupabaseStorageService.initSupabase();
   await Firebase.initializeApp();
   setupGetIt();
   runApp(const MyApp());
