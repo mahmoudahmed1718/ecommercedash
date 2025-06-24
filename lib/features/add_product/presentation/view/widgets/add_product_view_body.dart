@@ -72,7 +72,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
             CustomTextFormField(
               name: 'Month Expires',
               textType: TextInputType.text,
-              maxLines: 5,
+
               onSaved: (value) {
                 monthExpires = num.parse(value!);
               },
@@ -81,7 +81,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
             CustomTextFormField(
               name: 'unit Amount',
               textType: TextInputType.text,
-              maxLines: 5,
+
               onSaved: (value) {
                 unitAmount = num.parse(value!);
               },
@@ -90,7 +90,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
             CustomTextFormField(
               name: 'Number Of Calories',
               textType: TextInputType.text,
-              maxLines: 5,
+
               onSaved: (value) {
                 numberOfCalories = num.parse(value!);
               },
