@@ -1,12 +1,13 @@
 import 'dart:io';
-
 import 'package:ecommercedash/core/widgets/custom_button.dart';
 import 'package:ecommercedash/core/widgets/custom_text_form_filed.dart';
 import 'package:ecommercedash/core/widgets/snak_bar.dart';
 import 'package:ecommercedash/features/add_product/domain/entities/add_product_input_entity.dart';
+import 'package:ecommercedash/features/add_product/presentation/manger/add_product/add_product_cubit.dart';
 import 'package:ecommercedash/features/add_product/presentation/view/widgets/image_file.dart';
 import 'package:ecommercedash/features/add_product/presentation/view/widgets/is_checked_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
@@ -94,6 +95,9 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                         imageFile: image!,
                         isFeatured: ischecked ? 'yes' : 'no',
                       );
+                  context.read<AddProductCubit>().addProduct(
+                    addProductInputEntity,
+                  );
                   snackBarMethod(context, 'Product added successfully');
                 }
                 setState(() {
