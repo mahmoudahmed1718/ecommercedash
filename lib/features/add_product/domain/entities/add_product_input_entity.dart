@@ -9,7 +9,7 @@ class AddProductInputEntity {
   String? imageUrl;
   final String isFeatured;
   final int monthExpires;
-  final bool isOrgainic = false;
+  final bool isOrgainic;
   final int numberOfCalories;
   final int unitAmount;
   final num avergeRating = 0;
@@ -20,6 +20,7 @@ class AddProductInputEntity {
     required this.price,
     required this.code,
     required this.imageFile,
+    this.isOrgainic = false,
     this.imageUrl,
     required this.isFeatured,
     required this.monthExpires,

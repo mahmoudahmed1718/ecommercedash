@@ -8,6 +8,7 @@ class AddProductInputModel extends AddProductInputEntity {
     required super.code,
     required super.imageFile,
     required super.isFeatured,
+    required super.isOrgainic,
     super.imageUrl,
     required super.monthExpires,
     required super.numberOfCalories,
@@ -26,6 +27,7 @@ class AddProductInputModel extends AddProductInputEntity {
       monthExpires: entity.monthExpires,
       numberOfCalories: entity.numberOfCalories,
       unitAmount: entity.unitAmount,
+      isOrgainic: entity.isOrgainic,
     );
   }
   toJson() {
