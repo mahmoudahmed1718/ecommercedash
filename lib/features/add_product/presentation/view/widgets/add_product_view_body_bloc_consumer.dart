@@ -1,7 +1,7 @@
 import 'package:ecommercedash/core/widgets/snak_bar.dart';
 import 'package:ecommercedash/features/add_product/presentation/manger/add_product/add_product_cubit.dart';
 import 'package:ecommercedash/features/add_product/presentation/view/widgets/add_product_view_body.dart';
-import 'package:ecommercedash/features/add_product/presentation/view/widgets/custom_modal_progress_hud.dart';
+import 'package:ecommercedash/core/widgets/custom_modal_progress_hud.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

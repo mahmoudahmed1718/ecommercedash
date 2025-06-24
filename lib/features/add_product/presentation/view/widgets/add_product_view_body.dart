@@ -6,6 +6,7 @@ import 'package:ecommercedash/features/add_product/domain/entities/add_product_i
 import 'package:ecommercedash/features/add_product/presentation/manger/add_product/add_product_cubit.dart';
 import 'package:ecommercedash/features/add_product/presentation/view/widgets/image_file.dart';
 import 'package:ecommercedash/features/add_product/presentation/view/widgets/is_checked_box.dart';
+import 'package:ecommercedash/features/add_product/presentation/view/widgets/is_product_organic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +22,9 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   late String name, code, description;
   late double price;
+  late num monthExpires, unitAmount, numberOfCalories;
   File? image;
+  bool isOraginic = false;
   bool ischecked = false;
   @override
   Widget build(BuildContext context) {
@@ -66,8 +69,48 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               },
             ),
             const SizedBox(height: 16),
-
-            IsCheckedBox(onchanged: (value) {}),
+            CustomTextFormField(
+              name: 'Month Expires',
+              textType: TextInputType.text,
+              maxLines: 5,
+              onSaved: (value) {
+                monthExpires = num.parse(value!);
+              },
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormField(
+              name: 'unit Amount',
+              textType: TextInputType.text,
+              maxLines: 5,
+              onSaved: (value) {
+                unitAmount = num.parse(value!);
+              },
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormField(
+              name: 'Number Of Calories',
+              textType: TextInputType.text,
+              maxLines: 5,
+              onSaved: (value) {
+                numberOfCalories = num.parse(value!);
+              },
+            ),
+            const SizedBox(height: 16),
+            IsProductOraganic(
+              onchanged: (value) {
+                setState(() {
+                  isOraginic = value;
+                });
+              },
+            ),
+            const SizedBox(height: 16),
+            IsCheckedBox(
+              onchanged: (value) {
+                setState(() {
+                  ischecked = value;
+                });
+              },
+            ),
             const SizedBox(height: 16),
             ImageFile(onImagePicked: (imageFile) {}),
             const SizedBox(height: 24),
@@ -94,6 +137,9 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                         code: code,
                         imageFile: image!,
                         isFeatured: ischecked ? 'yes' : 'no',
+                        monthExpires: monthExpires.toInt(),
+                        numberOfCalories: numberOfCalories.toInt(),
+                        unitAmount: unitAmount.toInt(),
                       );
                   context.read<AddProductCubit>().addProduct(
                     addProductInputEntity,
