@@ -49,7 +49,9 @@ class AddProductInputModel extends AddProductInputEntity {
       'isOrganic': isOrgainic,
       'avergeRating': avergeRating,
       'rangeCount': rangeCount,
-      'reviews': reviews,
+      'reviews': (reviews as List<ReviewModel>)
+          .map((review) => review.toJson())
+          .toList(),
     };
   }
 }
