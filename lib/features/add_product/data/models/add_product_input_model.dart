@@ -28,7 +28,6 @@ class AddProductInputModel extends AddProductInputEntity {
       'description': description,
       'price': price,
       'code': code,
-      'imageFile': imageFile,
       'imageUrl': imageUrl,
       'isFeatured': isFeatured,
     };
