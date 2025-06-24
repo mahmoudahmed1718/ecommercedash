@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:ecommercedash/features/add_product/domain/entities/review_entity.dart';
+
 class AddProductInputEntity {
   final String name;
   final String description;
@@ -14,7 +16,9 @@ class AddProductInputEntity {
   final int unitAmount;
   final num avergeRating = 0;
   final num rangeCount = 0;
+  final List<ReviewEntity> reviews;
   AddProductInputEntity({
+    required this.reviews,
     required this.name,
     required this.description,
     required this.price,

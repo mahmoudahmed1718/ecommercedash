@@ -1,3 +1,4 @@
+import 'package:ecommercedash/features/add_product/data/models/review_model.dart';
 import 'package:ecommercedash/features/add_product/domain/entities/add_product_input_entity.dart';
 
 class AddProductInputModel extends AddProductInputEntity {
@@ -13,6 +14,7 @@ class AddProductInputModel extends AddProductInputEntity {
     required super.monthExpires,
     required super.numberOfCalories,
     required super.unitAmount,
+    required super.reviews,
   });
 
   factory AddProductInputModel.fromEntity(AddProductInputEntity entity) {
@@ -28,6 +30,9 @@ class AddProductInputModel extends AddProductInputEntity {
       numberOfCalories: entity.numberOfCalories,
       unitAmount: entity.unitAmount,
       isOrgainic: entity.isOrgainic,
+      reviews: entity.reviews
+          .map((review) => ReviewModel.fromEntity(review))
+          .toList(),
     );
   }
   toJson() {
@@ -44,6 +49,7 @@ class AddProductInputModel extends AddProductInputEntity {
       'isOrganic': isOrgainic,
       'avergeRating': avergeRating,
       'rangeCount': rangeCount,
+      'reviews': reviews,
     };
   }
 }
