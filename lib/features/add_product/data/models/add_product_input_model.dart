@@ -2,6 +2,7 @@ import 'package:ecommercedash/features/add_product/data/models/review_model.dart
 import 'package:ecommercedash/features/add_product/domain/entities/add_product_input_entity.dart';
 
 class AddProductInputModel extends AddProductInputEntity {
+  final int sellingCount;
   AddProductInputModel({
     required super.name,
     required super.description,
@@ -11,10 +12,12 @@ class AddProductInputModel extends AddProductInputEntity {
     required super.isFeatured,
     required super.isOrgainic,
     super.imageUrl,
+
     required super.monthExpires,
     required super.numberOfCalories,
     required super.unitAmount,
     required super.reviews,
+    this.sellingCount = 0,
   });
 
   factory AddProductInputModel.fromEntity(AddProductInputEntity entity) {
@@ -48,6 +51,7 @@ class AddProductInputModel extends AddProductInputEntity {
       'unitAmount': unitAmount,
       'isOrganic': isOrgainic,
       'avergeRating': avergeRating,
+      'sellingCount': sellingCount,
       'rangeCount': rangeCount,
       'reviews': (reviews as List<ReviewModel>)
           .map((review) => review.toJson())
