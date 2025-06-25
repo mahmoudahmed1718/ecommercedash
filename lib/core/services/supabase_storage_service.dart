@@ -16,18 +16,21 @@ class SupabaseStorageService implements StorageService {
   }
 
   @override
+  @override
   Future<String> uploadFile(File file, String path) async {
     String fileName = b.basename(file.path);
     String extensionName = b.extension(file.path);
-    var result = await _supabase.client.storage
-        .from(BackendPoints.imagesBucket)
-        .upload('$path/$fileName.$extensionName', file);
 
-    // ignore: unused_local_variable
+    String fullPath = '$path/$fileName$extensionName';
+
+    await _supabase.client.storage
+        .from(BackendPoints.imagesBucket)
+        .upload(fullPath, file);
+
     final String publicUrl = _supabase.client.storage
         .from(BackendPoints.imagesBucket)
-        .getPublicUrl('$path/$fileName.$extensionName');
+        .getPublicUrl(fullPath);
 
-    return result;
+    return publicUrl;
   }
 }
