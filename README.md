@@ -57,7 +57,7 @@ Organized with domain, data, and presentation layers using `flutter_bloc` and `g
 
 ![Dashboard Preview](https://github.com/mahmoudahmed1718/ecommercedash/blob/main/assets/project_images/ecommerce%20dashboard.jpg)
 
-> Replace this URL after uploading your image to GitHub
+
 
 ---
 
