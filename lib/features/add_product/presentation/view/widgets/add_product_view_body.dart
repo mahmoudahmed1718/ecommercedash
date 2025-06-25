@@ -18,14 +18,34 @@ class AddProductViewBody extends StatefulWidget {
 }
 
 class _AddProductViewBodyState extends State<AddProductViewBody> {
-  GlobalKey<FormState> formKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  late String name, code, description;
-  late double price;
-  late num monthExpires, unitAmount, numberOfCalories;
+
+  // Controllers for all fields
+  final nameController = TextEditingController();
+  final priceController = TextEditingController();
+  final codeController = TextEditingController();
+  final descriptionController = TextEditingController();
+  final monthExpiresController = TextEditingController();
+  final unitAmountController = TextEditingController();
+  final caloriesController = TextEditingController();
+
   File? image;
   bool isOraginic = false;
   bool ischecked = false;
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    priceController.dispose();
+    codeController.dispose();
+    descriptionController.dispose();
+    monthExpiresController.dispose();
+    unitAmountController.dispose();
+    caloriesController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -38,62 +58,43 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
             const SizedBox(height: 16),
             CustomTextFormField(
               name: 'Product Name',
-              textType: TextInputType.text,
-              onSaved: (value) {
-                name = value!;
-              },
+              controller: nameController,
             ),
             const SizedBox(height: 16),
             CustomTextFormField(
               name: 'Product price',
               textType: TextInputType.number,
-              onSaved: (value) {
-                price = double.parse(value!);
-              },
+              controller: priceController,
             ),
             const SizedBox(height: 16),
             CustomTextFormField(
               name: 'Product code',
               textType: TextInputType.number,
-              onSaved: (value) {
-                code = value!;
-              },
+              controller: codeController,
             ),
             const SizedBox(height: 16),
             CustomTextFormField(
               name: 'Product description',
-              textType: TextInputType.text,
               maxLines: 5,
-              onSaved: (value) {
-                description = value!;
-              },
+              controller: descriptionController,
             ),
             const SizedBox(height: 16),
             CustomTextFormField(
               name: 'Month Expires',
-              textType: TextInputType.text,
-
-              onSaved: (value) {
-                monthExpires = num.parse(value!);
-              },
+              textType: TextInputType.number,
+              controller: monthExpiresController,
             ),
             const SizedBox(height: 16),
             CustomTextFormField(
-              name: 'unit Amount',
-              textType: TextInputType.text,
-
-              onSaved: (value) {
-                unitAmount = num.parse(value!);
-              },
+              name: 'Unit Amount',
+              textType: TextInputType.number,
+              controller: unitAmountController,
             ),
             const SizedBox(height: 16),
             CustomTextFormField(
               name: 'Number Of Calories',
-              textType: TextInputType.text,
-
-              onSaved: (value) {
-                numberOfCalories = num.parse(value!);
-              },
+              textType: TextInputType.number,
+              controller: caloriesController,
             ),
             const SizedBox(height: 16),
             IsProductOraganic(
@@ -112,12 +113,31 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               },
             ),
             const SizedBox(height: 16),
-            ImageFile(onImagePicked: (imageFile) {}),
+            ImageFile(
+              onImagePicked: (imageFile) {
+                setState(() {
+                  image = imageFile;
+                });
+              },
+            ),
             const SizedBox(height: 24),
             CustomButton(
               onpressed: () {
                 if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
+                  // Extract values
+                  final name = nameController.text.trim();
+                  final description = descriptionController.text.trim();
+                  final price =
+                      double.tryParse(priceController.text.trim()) ?? 0.0;
+                  final code = codeController.text.trim();
+                  final monthExpires =
+                      num.tryParse(monthExpiresController.text.trim()) ?? 0;
+                  final unitAmount =
+                      num.tryParse(unitAmountController.text.trim()) ?? 0;
+                  final numberOfCalories =
+                      num.tryParse(caloriesController.text.trim()) ?? 0;
+
+                  // Check required fields
                   if (image == null) {
                     snackBarMethod(context, 'Please select an image');
                     return;
@@ -129,25 +149,27 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     );
                     return;
                   }
-                  AddProductInputEntity addProductInputEntity =
-                      AddProductInputEntity(
-                        name: name,
-                        description: description,
-                        price: price,
-                        code: code,
-                        imageFile: image!,
-                        isFeatured: ischecked ? 'yes' : 'no',
-                        monthExpires: monthExpires.toInt(),
-                        numberOfCalories: numberOfCalories.toInt(),
-                        unitAmount: unitAmount.toInt(),
-                        isOrgainic: isOraginic,
-                        reviews: [],
-                      );
+
+                  final addProductInputEntity = AddProductInputEntity(
+                    name: name,
+                    description: description,
+                    price: price,
+                    code: code,
+                    imageFile: image!,
+                    isFeatured: ischecked ? 'yes' : 'no',
+                    monthExpires: monthExpires.toInt(),
+                    numberOfCalories: numberOfCalories.toInt(),
+                    unitAmount: unitAmount.toInt(),
+                    isOrgainic: isOraginic,
+                    reviews: [],
+                  );
+
                   context.read<AddProductCubit>().addProduct(
                     addProductInputEntity,
                   );
                   snackBarMethod(context, 'Product added successfully');
                 }
+
                 setState(() {
                   autovalidateMode = AutovalidateMode.always;
                 });

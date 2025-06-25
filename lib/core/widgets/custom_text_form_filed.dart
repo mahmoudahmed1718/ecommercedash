@@ -5,18 +5,20 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType textType;
   final int maxLines;
   final void Function(String?)? onSaved;
-
+  final TextEditingController? controller;
   const CustomTextFormField({
     super.key,
     required this.name,
     this.textType = TextInputType.text,
     this.maxLines = 1,
     this.onSaved,
+    this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       decoration: InputDecoration(
         labelText: name,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),

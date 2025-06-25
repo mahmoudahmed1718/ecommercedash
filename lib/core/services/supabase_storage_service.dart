@@ -19,7 +19,7 @@ class SupabaseStorageService implements StorageService {
     String fileName = b.basename(file.path);
     String extensionName = b.extension(file.path);
     var result = await _supabase.client.storage
-        .from('fruits_images')
+        .from('fruits-images')
         .upload('$path/$fileName.$extensionName', file);
 
     return result;
