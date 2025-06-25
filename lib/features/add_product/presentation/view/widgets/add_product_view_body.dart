@@ -167,9 +167,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   context.read<AddProductCubit>().addProduct(
                     addProductInputEntity,
                   );
-                  snackBarMethod(context, 'Product added successfully');
                 }
-
                 setState(() {
                   autovalidateMode = AutovalidateMode.always;
                 });

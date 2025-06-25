@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:ecommercedash/core/services/storage_service.dart';
+import 'package:ecommercedash/core/utils/backend_points.dart';
 import 'package:ecommercedash/core/utils/keys.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:path/path.dart' as b;
@@ -19,8 +20,12 @@ class SupabaseStorageService implements StorageService {
     String fileName = b.basename(file.path);
     String extensionName = b.extension(file.path);
     var result = await _supabase.client.storage
-        .from('fruits-images')
+        .from(BackendPoints.imagesBucket)
         .upload('$path/$fileName.$extensionName', file);
+
+    final String publicUrl = _supabase.client.storage
+        .from(BackendPoints.imagesBucket)
+        .getPublicUrl('$path/$fileName.$extensionName');
 
     return result;
   }
