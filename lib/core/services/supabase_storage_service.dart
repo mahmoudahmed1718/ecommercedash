@@ -23,6 +23,7 @@ class SupabaseStorageService implements StorageService {
         .from(BackendPoints.imagesBucket)
         .upload('$path/$fileName.$extensionName', file);
 
+    // ignore: unused_local_variable
     final String publicUrl = _supabase.client.storage
         .from(BackendPoints.imagesBucket)
         .getPublicUrl('$path/$fileName.$extensionName');

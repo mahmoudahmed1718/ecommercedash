@@ -23,6 +23,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
     // Navigate to Dashboard
     Future.delayed(const Duration(seconds: 3), () {
+      // ignore: use_build_context_synchronously
       Navigator.pushReplacementNamed(context, DashBoardView.routeName);
     });
   }
