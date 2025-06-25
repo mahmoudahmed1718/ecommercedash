@@ -1,54 +1,69 @@
-# 🛍️ ecommercedash – Flutter Admin Dashboard for eCommerce
+# 🛒 ecommercedash – Flutter + Firebase + Supabase
 
-A professional and modern **Flutter dashboard app** that allows admins to manage eCommerce products by adding **name, description, price, code, image**, and other fields. It stores data in **Firestore**, and product images in either **Firebase Storage** or **Supabase Storage**, with the ability to switch between them.
+A powerful **eCommerce admin dashboard** built with **Flutter**, using **Firebase Firestore** to store product data and support for **Firebase Storage** or **Supabase Storage** for product images. Designed to help admins manage products easily without needing a backend server.
 
 ---
 
-## 📸 Screenshot
+## 🌟 Key Features
+
+✅ **Product Management**  
+Add, update, delete products with the following fields:
+- 🏷️ Name
+- 📝 Description
+- 💲 Price
+- 🆔 Product Code
+- 🖼️ Image
+- ➕ Additional customizable fields
+
+📦 **Storage Switching**  
+Switch between:
+- 🔥 Firebase Storage  
+- 🐘 Supabase Storage
+
+🗃️ **Cloud Firestore Integration**  
+All product data is stored securely and instantly synced using Firebase Firestore.
+
+🖼️ **Image Picker Integration**  
+Pick product images from gallery or camera using `image_picker`.
+
+⏳ **Skeleton Loading UI**  
+Smooth skeleton screen experience with `skeletonizer`.
+
+🔐 **Environment Setup**  
+Store your API keys securely with `.env` and `flutter_dotenv`.
+
+🧱 **Clean Architecture**  
+Organized with domain, data, and presentation layers using `flutter_bloc` and `get_it`.
+
+---
+
+## 🧰 Tech Stack & Packages
+
+### 🔹 Firebase & Supabase
+- `firebase_core`, `cloud_firestore`, `firebase_storage`, `supabase_flutter`
+
+### 🔹 State Management
+- `bloc`, `flutter_bloc`, `dartz`, `get_it`
+
+### 🔹 UI & UX
+- `skeletonizer`, `image_picker`, `modal_progress_hud_nsn`
+
+### 🔹 Configuration
+- `flutter_dotenv`, `.env` file
+
+---
+
+## 📷 Screenshot
 
 ![Dashboard Preview](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/blob/main/assets/images/dashboard_preview.jpg?raw=true)
 
-> Replace the URL above after uploading your image to GitHub.
+> Replace this URL after uploading your image to GitHub
 
 ---
 
-## 🚀 Key Features
-
-- 🧾 **Product Management** — Add, edit, delete products  
-- 📄 Fields: `Name`, `Description`, `Price`, `Code`, `Image`, etc.  
-- ☁️ **Firebase Firestore** — Store product data  
-- 🖼️ **Cloud Storage** — Use Firebase Storage or Supabase Storage for images  
-- 🔀 **Switch Between Storage Providers**  
-- 🧱 **Clean Architecture** with Domain, Data, and Presentation layers  
-- 📦 **State Management** with BLoC  
-- 🦴 **Skeleton Loading** with `skeletonizer`  
-- 📲 **Image Picker** to upload product photos  
-- 🔐 **.env Configuration** for secure API keys
-
----
-
-## 🧱 Tech Stack
-
-| Tool/Package        | Purpose                         |
-|---------------------|----------------------------------|
-| Flutter             | UI framework                    |
-| Firebase Core       | Firebase integration            |
-| Firebase Firestore  | Store product details           |
-| Firebase Storage    | Store product images            |
-| Supabase Storage    | Alternative image storage       |
-| flutter_bloc / bloc | State management                |
-| dartz               | Functional programming          |
-| get_it              | Dependency injection            |
-| skeletonizer        | Beautiful loading placeholders  |
-| flutter_dotenv      | API key & environment handling  |
-| image_picker        | Select product images           |
-
----
-
-## 🛠️ Getting Started
-
-### 1️⃣ Clone the Repository
+## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ecommercedash.git
+git clone https://github.com/mahmudahmed1718/ecommercedash.git
 cd ecommercedash
+flutter pub get
